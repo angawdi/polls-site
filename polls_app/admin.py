@@ -16,10 +16,12 @@ class ChoiceInline(admin.TabularInline):
 class QuestionAdmin(admin.ModelAdmin):
 	fieldset = [
 		('Question Information', {'fields': ['question_text']}),
-		('Date and Time', {'fields': ['pub_date']}), 
+		('Date and Time', {'fields': ['pub_data']}), 
 	]
 
 	inlines = [ChoiceInline]
+	list_display = ('question_text', 'pub_data', 'was_published_recently')
+	list_filter = ['pub_data']
 
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(Choice)
